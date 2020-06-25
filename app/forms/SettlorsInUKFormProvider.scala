@@ -14,24 +14,17 @@
  * limitations under the License.
  */
 
-package forms.behaviours
+package forms
 
-import play.api.data.{Form, FormError}
+import javax.inject.Inject
 
-trait StringFieldBehaviours extends FieldBehaviours {
+import forms.mappings.Mappings
+import play.api.data.Form
 
-    def fieldWithMaxLength(form: Form[_],
-                           fieldName: String,
-                           maxLength: Int,
-                           lengthError: FormError): Unit = {
+class SettlorsInUKFormProvider @Inject() extends Mappings {
 
-    s"must not bind strings longer than $maxLength characters" in {
-
-      forAll(stringsLongerThan(maxLength) -> "longString") {
-        string =>
-          val result = form.bind(Map(fieldName -> string)).apply(fieldName)
-          result.errors shouldEqual Seq(lengthError)
-      }
-    }
-  }
+  def apply(): Form[Boolean] =
+    Form(
+      "value" -> boolean("settlorsInUK.error.required")
+    )
 }
