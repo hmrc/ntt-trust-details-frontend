@@ -13,3 +13,13 @@ GET        /check-your-answers                          controllers.CheckYourAns
 GET        /unauthorised                                controllers.UnauthorisedController.onPageLoad
 
 GET        /accessibility-statement                     controllers.AccessibilityController.onPageLoad
+
+GET        /trustsName                        controllers.TrustsNameController.onPageLoad(mode: Mode = NormalMode)
+POST       /trustsName                        controllers.TrustsNameController.onSubmit(mode: Mode = NormalMode)
+GET        /changeTrustsName                  controllers.TrustsNameController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeTrustsName                  controllers.TrustsNameController.onSubmit(mode: Mode = CheckMode)
+
+GET        /trusteesInUK                        controllers.TrusteesInUKController.onPageLoad(mode: Mode = NormalMode)
+POST       /trusteesInUK                        controllers.TrusteesInUKController.onSubmit(mode: Mode = NormalMode)
+GET        /changeTrusteesInUK                  controllers.TrusteesInUKController.onPageLoad(mode: Mode = CheckMode)
+POST       /changeTrusteesInUK                  controllers.TrusteesInUKController.onSubmit(mode: Mode = CheckMode)

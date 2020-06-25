@@ -129,3 +129,16 @@ compliant.nine.p2.1=The service was built using parts that were tested by the
 compliant.nine.p2.2=Digital Accessibility Centre
 compliant.nine.p2.3=The full service was tested by HMRC and included disabled users.
 compliant.nine.p3=This page was prepared on [date when it was first published]. It was last updated on [date when it was last updated].
+
+trustsName.title = trustsName
+trustsName.heading = trustsName
+trustsName.checkYourAnswersLabel = trustsName
+trustsName.error.required = Enter trustsName
+trustsName.error.length = TrustsName must be 100 characters or less
+
+trusteesInUK.title = Are the trustees based in the UK
+trusteesInUK.heading = Are the trustees based in the UK
+trusteesInUK.all the trustees are based in the UK = all the trustees are based in the UK
+trusteesInUK.none = None of the trustees are based in the UK
+trusteesInUK.checkYourAnswersLabel = Are the trustees based in the UK
+trusteesInUK.error.required = Select trusteesInUK
