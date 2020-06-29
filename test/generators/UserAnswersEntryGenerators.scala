@@ -24,6 +24,54 @@ import play.api.libs.json.{JsValue, Json}
 
 trait UserAnswersEntryGenerators extends PageGenerators with ModelGenerators {
 
+  implicit lazy val arbitraryPreviouslyBasedUserAnswersEntry: Arbitrary[(PreviouslyBasedPage.type, JsValue)] =
+    Arbitrary {
+      for {
+        page  <- arbitrary[PreviouslyBasedPage.type]
+        value <- arbitrary[String].suchThat(_.nonEmpty).map(Json.toJson(_))
+      } yield (page, value)
+    }
+
+  implicit lazy val arbitraryOffshoreTrustUserAnswersEntry: Arbitrary[(OffshoreTrustPage.type, JsValue)] =
+    Arbitrary {
+      for {
+        page  <- arbitrary[OffshoreTrustPage.type]
+        value <- arbitrary[Boolean].map(Json.toJson(_))
+      } yield (page, value)
+    }
+
+  implicit lazy val arbitraryExpressTrustUserAnswersEntry: Arbitrary[(ExpressTrustPage.type, JsValue)] =
+    Arbitrary {
+      for {
+        page  <- arbitrary[ExpressTrustPage.type]
+        value <- arbitrary[Boolean].map(Json.toJson(_))
+      } yield (page, value)
+    }
+
+  implicit lazy val arbitraryTrusteesBasedInUKUserAnswersEntry: Arbitrary[(TrusteesBasedInUKPage.type, JsValue)] =
+    Arbitrary {
+      for {
+        page  <- arbitrary[TrusteesBasedInUKPage.type]
+        value <- arbitrary[TrusteesBasedInUK].map(Json.toJson(_))
+      } yield (page, value)
+    }
+
+  implicit lazy val arbitraryTrustsNameUserAnswersEntry: Arbitrary[(TrustsNamePage.type, JsValue)] =
+    Arbitrary {
+      for {
+        page  <- arbitrary[TrustsNamePage.type]
+        value <- arbitrary[String].suchThat(_.nonEmpty).map(Json.toJson(_))
+      } yield (page, value)
+    }
+
+  implicit lazy val arbitraryDateTrustStartedUserAnswersEntry: Arbitrary[(DateTrustStartedPage.type, JsValue)] =
+    Arbitrary {
+      for {
+        page  <- arbitrary[DateTrustStartedPage.type]
+        value <- arbitrary[Int].map(Json.toJson(_))
+      } yield (page, value)
+    }
+
   implicit lazy val arbitrarySettlorsInUKUserAnswersEntry: Arbitrary[(SettlorsInUKPage.type, JsValue)] =
     Arbitrary {
       for {

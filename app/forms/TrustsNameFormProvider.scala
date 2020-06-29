@@ -14,16 +14,18 @@
  * limitations under the License.
  */
 
-package generators
+package forms
 
-import models._
-import org.scalacheck.Arbitrary.arbitrary
-import org.scalacheck.{Arbitrary, Gen}
+import javax.inject.Inject
 
-trait ModelGenerators {
+import forms.mappings.Mappings
+import play.api.data.Form
 
-  implicit lazy val arbitraryTrusteesBasedInUK: Arbitrary[TrusteesBasedInUK] =
-    Arbitrary {
-      Gen.oneOf(TrusteesBasedInUK.values.toSeq)
-    }
+class TrustsNameFormProvider @Inject() extends Mappings {
+
+  def apply(): Form[String] =
+    Form(
+      "value" -> text("trustsName.error.required")
+        .verifying(maxLength(100, "trustsName.error.length"))
+    )
 }

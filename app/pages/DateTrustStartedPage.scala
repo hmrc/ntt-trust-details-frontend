@@ -14,16 +14,15 @@
  * limitations under the License.
  */
 
-package generators
+package pages
 
-import models._
-import org.scalacheck.Arbitrary.arbitrary
-import org.scalacheck.{Arbitrary, Gen}
+import java.time.LocalDate
 
-trait ModelGenerators {
+import play.api.libs.json.JsPath
 
-  implicit lazy val arbitraryTrusteesBasedInUK: Arbitrary[TrusteesBasedInUK] =
-    Arbitrary {
-      Gen.oneOf(TrusteesBasedInUK.values.toSeq)
-    }
+case object DateTrustStartedPage extends QuestionPage[LocalDate] {
+
+  override def path: JsPath = JsPath \ toString
+
+  override def toString: String = "dateTrustStarted"
 }

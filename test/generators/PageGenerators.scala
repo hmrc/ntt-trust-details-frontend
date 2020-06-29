@@ -21,6 +21,24 @@ import pages._
 
 trait PageGenerators {
 
+  implicit lazy val arbitraryPreviouslyBasedPage: Arbitrary[PreviouslyBasedPage.type] =
+    Arbitrary(PreviouslyBasedPage)
+
+  implicit lazy val arbitraryOffshoreTrustPage: Arbitrary[OffshoreTrustPage.type] =
+    Arbitrary(OffshoreTrustPage)
+
+  implicit lazy val arbitraryExpressTrustPage: Arbitrary[ExpressTrustPage.type] =
+    Arbitrary(ExpressTrustPage)
+
+  implicit lazy val arbitraryTrusteesBasedInUKPage: Arbitrary[TrusteesBasedInUKPage.type] =
+    Arbitrary(TrusteesBasedInUKPage)
+
+  implicit lazy val arbitraryTrustsNamePage: Arbitrary[TrustsNamePage.type] =
+    Arbitrary(TrustsNamePage)
+
+  implicit lazy val arbitraryDateTrustStartedPage: Arbitrary[DateTrustStartedPage.type] =
+    Arbitrary(DateTrustStartedPage)
+
   implicit lazy val arbitrarySettlorsInUKPage: Arbitrary[SettlorsInUKPage.type] =
     Arbitrary(SettlorsInUKPage)
 }

@@ -130,7 +130,46 @@ compliant.nine.p2.2=Digital Accessibility Centre
 compliant.nine.p2.3=The full service was tested by HMRC and included disabled users.
 compliant.nine.p3=This page was prepared on [date when it was first published]. It was last updated on [date when it was last updated].
 
-settlorsInUK.title = settlorsInUK
-settlorsInUK.heading = settlorsInUK
-settlorsInUK.checkYourAnswersLabel = settlorsInUK
-settlorsInUK.error.required = Select yes if settlorsInUK
+settlorsInUK.title = Are there any settlors based in the UK?
+settlorsInUK.heading = Are there any settlors based in the UK?
+settlorsInUK.checkYourAnswersLabel = Are there any settlors based in the UK?
+settlorsInUK.error.required = Select yes if there is any settlors based in the UK
+
+dateTrustStarted.title = When was the trust created?
+dateTrustStarted.heading = When was the trust created?
+dateTrustStarted.hint = For example, 31 3 2015
+dateTrustStarted.checkYourAnswersLabel = When was the trust created?
+dateTrustStarted.error.required.all = Enter the date the trust started
+dateTrustStarted.error.required.two = The date the trust started must include {0} and {1}
+dateTrustStarted.error.required = The date the trust started must include {0}
+dateTrustStarted.error.invalid = Enter a real date
+
+trustsName.title = What is the trust's name?
+trustsName.heading = What is the trust's name?
+trustsName.checkYourAnswersLabel = What is the trust's name?
+trustsName.error.required = Enter the trust's name
+trustsName.error.length = The trust's name must be 100 characters or less
+
+trusteesBasedInUK.title = Are the trustees based in the UK
+trusteesBasedInUK.heading = Are the trustees based in the UK
+trusteesBasedInUK.all = All the trustees are based in the UK
+trusteesBasedInUK.none = None of the trustees are based in the UK
+trusteesBasedInUK.both = The trust contains trustees based in and outside the UK
+trusteesBasedInUK.checkYourAnswersLabel = Are the trustees based in the UK
+trusteesBasedInUK.error.required = Select trusteesBasedInUK
+
+expressTrust.title = Is the trust a express trust?
+expressTrust.heading = Is the trust a express trust?
+expressTrust.checkYourAnswersLabel = Is the trust a express trust?
+expressTrust.error.required = Select yes if the trust is an express trust
+
+offshoreTrust.title = Has the trust ever been based offshore?
+offshoreTrust.heading = Has the trust ever been based offshore?
+offshoreTrust.checkYourAnswersLabel = Has the trust ever been based offshore?
+offshoreTrust.error.required = Select yes if the trust has ever been based offshore
+
+previouslyBased.title = Where was the trust based before?
+previouslyBased.heading = Where was the trust based before?
+previouslyBased.checkYourAnswersLabel = Where was the trust based before?
+previouslyBased.error.required = Enter where the trust was based before
+previouslyBased.error.length = previouslyBased must be 100 characters or less

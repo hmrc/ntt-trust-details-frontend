@@ -14,16 +14,23 @@
  * limitations under the License.
  */
 
-package generators
+package forms
 
-import models._
-import org.scalacheck.Arbitrary.arbitrary
-import org.scalacheck.{Arbitrary, Gen}
+import java.time.LocalDate
 
-trait ModelGenerators {
+import forms.mappings.Mappings
+import javax.inject.Inject
+import play.api.data.Form
 
-  implicit lazy val arbitraryTrusteesBasedInUK: Arbitrary[TrusteesBasedInUK] =
-    Arbitrary {
-      Gen.oneOf(TrusteesBasedInUK.values.toSeq)
-    }
+class DateTrustStartedFormProvider @Inject() extends Mappings {
+
+  def apply(): Form[LocalDate] =
+    Form(
+      "value" -> localDate(
+        invalidKey     = "dateTrustStarted.error.invalid",
+        allRequiredKey = "dateTrustStarted.error.required.all",
+        twoRequiredKey = "dateTrustStarted.error.required.two",
+        requiredKey    = "dateTrustStarted.error.required"
+      )
+    )
 }

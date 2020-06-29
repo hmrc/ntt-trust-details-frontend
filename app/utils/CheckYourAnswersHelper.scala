@@ -29,6 +29,96 @@ import uk.gov.hmrc.viewmodels.Text.Literal
 
 class CheckYourAnswersHelper(userAnswers: UserAnswers)(implicit messages: Messages) {
 
+  def previouslyBased: Option[Row] = userAnswers.get(PreviouslyBasedPage) map {
+    answer =>
+      Row(
+        key     = Key(msg"previouslyBased.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
+        value   = Value(lit"$answer"),
+        actions = List(
+          Action(
+            content            = msg"site.edit",
+            href               = routes.PreviouslyBasedController.onPageLoad(CheckMode).url,
+            visuallyHiddenText = Some(msg"site.edit.hidden".withArgs(msg"previouslyBased.checkYourAnswersLabel"))
+          )
+        )
+      )
+  }
+
+  def offshoreTrust: Option[Row] = userAnswers.get(OffshoreTrustPage) map {
+    answer =>
+      Row(
+        key     = Key(msg"OffshoreTrust.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
+        value   = Value(yesOrNo(answer)),
+        actions = List(
+          Action(
+            content            = msg"site.edit",
+            href               = routes.OffshoreTrustController.onPageLoad(CheckMode).url,
+            visuallyHiddenText = Some(msg"site.edit.hidden".withArgs(msg"offshoreTrust.checkYourAnswersLabel"))
+          )
+        )
+      )
+  }
+
+  def expressTrust: Option[Row] = userAnswers.get(ExpressTrustPage) map {
+    answer =>
+      Row(
+        key     = Key(msg"expressTrust.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
+        value   = Value(yesOrNo(answer)),
+        actions = List(
+          Action(
+            content            = msg"site.edit",
+            href               = routes.ExpressTrustController.onPageLoad(CheckMode).url,
+            visuallyHiddenText = Some(msg"site.edit.hidden".withArgs(msg"expressTrust.checkYourAnswersLabel"))
+          )
+        )
+      )
+  }
+
+  def trusteesBasedInUK: Option[Row] = userAnswers.get(TrusteesBasedInUKPage) map {
+    answer =>
+      Row(
+        key     = Key(msg"trusteesBasedInUK.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
+        value   = Value(Html(answer.map(a => msg"trusteesBasedInUK.$a".resolve).mkString(",<br>"))),
+        actions = List(
+          Action(
+            content            = msg"site.edit",
+            href               = routes.TrusteesBasedInUKController.onPageLoad(CheckMode).url,
+            visuallyHiddenText = Some(msg"site.edit.hidden".withArgs(msg"trusteesBasedInUK.checkYourAnswersLabel"))
+          )
+        )
+      )
+  }
+
+  def trustsName: Option[Row] = userAnswers.get(TrustsNamePage) map {
+    answer =>
+      Row(
+        key     = Key(msg"trustsName.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
+        value   = Value(lit"$answer"),
+        actions = List(
+          Action(
+            content            = msg"site.edit",
+            href               = routes.TrustsNameController.onPageLoad(CheckMode).url,
+            visuallyHiddenText = Some(msg"site.edit.hidden".withArgs(msg"trustsName.checkYourAnswersLabel"))
+          )
+        )
+      )
+  }
+
+  def dateTrustStarted: Option[Row] = userAnswers.get(DateTrustStartedPage) map {
+    answer =>
+      Row(
+        key     = Key(msg"dateTrustStarted.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
+        value   = Value(Literal(answer.format(dateFormatter))),
+        actions = List(
+          Action(
+            content            = msg"site.edit",
+            href               = routes.DateTrustStartedController.onPageLoad(CheckMode).url,
+            visuallyHiddenText = Some(msg"site.edit.hidden".withArgs(msg"dateTrustStarted.checkYourAnswersLabel"))
+          )
+        )
+      )
+  }
+
   def settlorsInUK: Option[Row] = userAnswers.get(SettlorsInUKPage) map {
     answer =>
       Row(

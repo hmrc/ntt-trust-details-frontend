@@ -40,9 +40,17 @@ class CheckYourAnswersController @Inject()(
   def onPageLoad(): Action[AnyContent] = (identify andThen getData andThen requireData).async {
     implicit request =>
 
-      val helper = new CheckYourAnswersHelper(request.userAnswers)
+      val checkYourAnswersHelper = new CheckYourAnswersHelper(request.userAnswers)
 
-      val answers: Seq[SummaryList.Row] = Seq()
+      val answers: Seq[SummaryList.Row] = Seq(
+        checkYourAnswersHelper.trustsName,
+        checkYourAnswersHelper.dateTrustStarted,
+        checkYourAnswersHelper.trusteesBasedInUK,
+        checkYourAnswersHelper.settlorsInUK,
+        checkYourAnswersHelper.offshoreTrust,
+        checkYourAnswersHelper.previouslyBased,
+        checkYourAnswersHelper.expressTrust
+    ).flatten
 
       renderer.render(
         "check-your-answers.njk",
