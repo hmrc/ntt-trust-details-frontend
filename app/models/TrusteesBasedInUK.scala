@@ -26,10 +26,12 @@ object TrusteesBasedInUK extends Enumerable.Implicits {
 
   case object All extends WithName("all") with TrusteesBasedInUK
   case object None extends WithName("none") with TrusteesBasedInUK
+  case object Both extends WithName("both") with TrusteesBasedInUK
 
   val values: Seq[TrusteesBasedInUK] = Seq(
     All,
-    None
+    None,
+    Both
   )
 
   def checkboxes(form: Form[_])(implicit messages: Messages): Seq[Checkboxes.Item] = {
@@ -37,7 +39,8 @@ object TrusteesBasedInUK extends Enumerable.Implicits {
     val field = form("value")
     val items = Seq(
       Checkboxes.Checkbox(msg"trusteesBasedInUK.all", All.toString),
-      Checkboxes.Checkbox(msg"trusteesBasedInUK.none", None.toString)
+      Checkboxes.Checkbox(msg"trusteesBasedInUK.none", None.toString),
+      Checkboxes.Checkbox(msg"trusteesBasedInUK.both", Both.toString)
     )
 
     Checkboxes.set(field, items)

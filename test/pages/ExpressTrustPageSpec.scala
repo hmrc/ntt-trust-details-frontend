@@ -14,24 +14,18 @@
  * limitations under the License.
  */
 
-package controllers
+package pages
 
-import javax.inject.Inject
-import play.api.i18n.I18nSupport
-import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
-import renderer.Renderer
-import uk.gov.hmrc.play.bootstrap.controller.FrontendBaseController
+import pages.behaviours.PageBehaviours
 
-import scala.concurrent.ExecutionContext
+class ExpressTrustPageSpec extends PageBehaviours {
 
-class IndexController @Inject()(
-    val controllerComponents: MessagesControllerComponents,
-    renderer: Renderer
-)(implicit ec: ExecutionContext) extends FrontendBaseController with I18nSupport {
+  "expressTrustPage" - {
 
-  def onPageLoad: Action[AnyContent] = Action.async {
-    implicit request =>
+    beRetrievable[Boolean](ExpressTrustPage)
 
-      renderer.render("index.njk").map(Ok(_))
+    beSettable[Boolean](ExpressTrustPage)
+
+    beRemovable[Boolean](ExpressTrustPage)
   }
 }
