@@ -32,15 +32,63 @@ class NavigatorSpec extends SpecBase with ScalaCheckPropertyChecks with Generato
 
     "in Normal mode" - {
 
-      "must go from a page that doesn't exist in the route map to Index" in {
-
-        case object UnknownPage extends Page
+      "must go from trustsName page to DateTrustStarted page" in {
 
         forAll(arbitrary[UserAnswers]) {
           answers =>
 
-            navigator.nextPage(UnknownPage, NormalMode, answers)
-              .mustBe(routes.IndexController.onPageLoad())
+            navigator.nextPage(TrustsNamePage, NormalMode, answers)
+              .mustBe(routes.DateTrustStartedController.onPageLoad(NormalMode))
+        }
+      }
+
+      "must go from dateTrustStarted page to trusteesBased page" in {
+
+        forAll(arbitrary[UserAnswers]) {
+          answers =>
+
+            navigator.nextPage(DateTrustStartedPage, NormalMode, answers)
+              .mustBe(routes.TrusteesBasedInUKController.onPageLoad(NormalMode))
+        }
+      }
+
+      "must go from trusteesBasedInUK page to SettlorsInUK page" in {
+
+        forAll(arbitrary[UserAnswers]) {
+          answers =>
+
+            navigator.nextPage(TrusteesBasedInUKPage, NormalMode, answers)
+              .mustBe(routes.SettlorsInUKController.onPageLoad(NormalMode))
+        }
+      }
+
+      "must go from settlorsInUK page to OffshoreTrust page" in {
+
+        forAll(arbitrary[UserAnswers]) {
+          answers =>
+
+            navigator.nextPage(SettlorsInUKPage, NormalMode, answers)
+              .mustBe(routes.OffshoreTrustController.onPageLoad(NormalMode))
+        }
+      }
+
+      "must go from offshoreTrust page to PreviouslyBased page" in {
+
+        forAll(arbitrary[UserAnswers]) {
+          answers =>
+
+            navigator.nextPage(OffshoreTrustPage, NormalMode, answers)
+              .mustBe(routes.PreviouslyBasedController.onPageLoad(NormalMode))
+        }
+      }
+
+      "must go from previouslyBased page to ExpressTrust page" in {
+
+        forAll(arbitrary[UserAnswers]) {
+          answers =>
+
+            navigator.nextPage(PreviouslyBasedPage, NormalMode, answers)
+              .mustBe(routes.ExpressTrustController.onPageLoad(NormalMode))
         }
       }
     }

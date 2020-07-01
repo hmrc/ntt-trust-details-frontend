@@ -3,7 +3,7 @@
 {% from "macros/title.njk"                         import title %}
 
 {% block pageTitle %}
-  {{ title(messages("session_expired.title")) }}
+  {{ title(messages("unauthorised.title")) }}
 {% endblock %}
 
 {% block mainContent %}
@@ -13,12 +13,8 @@
       <div class="govuk-grid-column-two-thirds">
 
         <h1 class="govuk-heading-xl">
-          {{ messages("session_expired.heading") }}
+          {{ messages("unauthorised.heading") }}
         </h1>
-
-        <p class="govuk-body">
-          {{ messages("session_expired.guidance") }}
-        </p>
 
       </div>
     </div>

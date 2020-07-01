@@ -26,9 +26,9 @@ import play.twirl.api.Html
 
 import scala.concurrent.Future
 
-class SessionExpiredControllerSpec extends SpecBase {
+class UnauthorisedControllerSpec extends SpecBase {
 
-  "Session Expired Controller" - {
+  "Unauthorised Controller" - {
 
     "must return OK and the correct view for a GET" in {
 
@@ -37,7 +37,7 @@ class SessionExpiredControllerSpec extends SpecBase {
 
       val application = applicationBuilder(userAnswers = None).build()
 
-      val request = FakeRequest(GET, routes.SessionExpiredController.onPageLoad().url)
+      val request = FakeRequest(GET, routes.UnauthorisedController.onPageLoad().url)
 
       val result = route(application, request).value
 
@@ -47,7 +47,7 @@ class SessionExpiredControllerSpec extends SpecBase {
 
       verify(mockRenderer, times(1)).render(templateCaptor.capture(), any())(any())
 
-      templateCaptor.getValue mustEqual "session-expired.njk"
+      templateCaptor.getValue mustEqual "unauthorised.njk"
 
       application.stop()
     }

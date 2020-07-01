@@ -8,6 +8,8 @@ GET        /this-service-has-been-reset                 controllers.SessionExpir
 
 GET        /check-your-answers                          controllers.CheckYourAnswersController.onPageLoad
 
+GET        /unauthorised                                controllers.UnauthorisedController.onPageLoad
+
 GET        /accessibility-statement                     controllers.AccessibilityController.onPageLoad
 
 GET        /settlorsInUK                                controllers.SettlorsInUKController.onPageLoad(mode: Mode = NormalMode)
