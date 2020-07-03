@@ -62,7 +62,7 @@ class CheckYourAnswersHelper(userAnswers: UserAnswers)(implicit messages: Messag
   def offshoreTrust: Option[Row] = userAnswers.get(OffshoreTrustPage) map {
     answer =>
       Row(
-        key     = Key(msg"OffshoreTrust.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
+        key     = Key(msg"offshoreTrust.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
         value   = Value(yesOrNo(answer)),
         actions = List(
           Action(

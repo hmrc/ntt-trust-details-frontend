@@ -42,7 +42,7 @@ class SettlorsInUKController @Inject()(
                                         formProvider: SettlorsInUKFormProvider,
                                         val controllerComponents: MessagesControllerComponents,
                                         renderer: Renderer
-                                      )(implicit ec: ExecutionContext) extends FrontendBaseController with I18nSupport with NunjucksSupport {
+)(implicit ec: ExecutionContext) extends FrontendBaseController with I18nSupport with NunjucksSupport {
 
   private val form = formProvider()
 
