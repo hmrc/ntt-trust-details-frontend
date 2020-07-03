@@ -17,75 +17,71 @@
 package controllers
 
 import controllers.actions._
-import forms.DateTrustStartedFormProvider
+import forms.TrusteesBasedInUKFormProvider
 import javax.inject.Inject
-import models.Mode
+import models.{Mode, TrusteesBasedInUK}
 import navigation.Navigator
-import pages.DateTrustStartedPage
+import pages.TrusteesBasedInUKPage
 import play.api.i18n.{I18nSupport, MessagesApi}
 import play.api.libs.json.Json
 import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
 import renderer.Renderer
 import repositories.SessionRepository
 import uk.gov.hmrc.play.bootstrap.controller.FrontendBaseController
-import uk.gov.hmrc.viewmodels.{DateInput, NunjucksSupport}
+import uk.gov.hmrc.viewmodels.NunjucksSupport
 
 import scala.concurrent.{ExecutionContext, Future}
 
-class DateTrustStartedController @Inject()(
-                                           override val messagesApi: MessagesApi,
-                                           sessionRepository: SessionRepository,
-                                           navigator: Navigator,
-                                           identify: IdentifierAction,
-                                           getData: DataRetrievalAction,
-                                           requireData: DataRequiredAction,
-                                           formProvider: DateTrustStartedFormProvider,
-                                           val controllerComponents: MessagesControllerComponents,
-                                           renderer: Renderer
+class TrusteesBasedInUKController @Inject()(
+                                             override val messagesApi: MessagesApi,
+                                             sessionRepository: SessionRepository,
+                                             navigator: Navigator,
+                                             identify: IdentifierAction,
+                                             getData: DataRetrievalAction,
+                                             requireData: DataRequiredAction,
+                                             formProvider: TrusteesBasedInUKFormProvider,
+                                             val controllerComponents: MessagesControllerComponents,
+                                             renderer: Renderer
 )(implicit ec: ExecutionContext) extends FrontendBaseController with I18nSupport with NunjucksSupport {
 
-  val form = formProvider()
+  private val form = formProvider()
 
   def onPageLoad(mode: Mode): Action[AnyContent] = (identify andThen getData andThen requireData).async {
     implicit request =>
 
-      val preparedForm = request.userAnswers.get(DateTrustStartedPage) match {
+      val preparedForm = request.userAnswers.get(TrusteesBasedInUKPage) match {
+        case None => form
         case Some(value) => form.fill(value)
-        case None        => form
       }
 
-      val viewModel = DateInput.localDate(preparedForm("value"))
-
       val json = Json.obj(
-        "form" -> preparedForm,
-        "mode" -> mode,
-        "date" -> viewModel
+        "form"   -> preparedForm,
+        "mode"   -> mode,
+        "radios"  -> TrusteesBasedInUK.radios(preparedForm)
       )
 
-      renderer.render("dateTrustStarted.njk", json).map(Ok(_))
+      renderer.render("trusteesBasedInUK.njk", json).map(Ok(_))
   }
 
   def onSubmit(mode: Mode): Action[AnyContent] = (identify andThen getData andThen requireData).async {
     implicit request =>
 
       form.bindFromRequest().fold(
-        formWithErrors =>  {
-
-          val viewModel = DateInput.localDate(formWithErrors("value"))
+        formWithErrors => {
 
           val json = Json.obj(
-            "form" -> formWithErrors,
-            "mode" -> mode,
-            "date" -> viewModel
+            "form"   -> formWithErrors,
+            "mode"   -> mode,
+            "radios" -> TrusteesBasedInUK.radios(formWithErrors)
           )
 
-          renderer.render("dateTrustStarted.njk", json).map(BadRequest(_))
+          renderer.render("trusteesBasedInUK.njk", json).map(BadRequest(_))
         },
         value =>
           for {
-            updatedAnswers <- Future.fromTry(request.userAnswers.set(DateTrustStartedPage, value))
+            updatedAnswers <- Future.fromTry(request.userAnswers.set(TrusteesBasedInUKPage, value))
             _              <- sessionRepository.set(updatedAnswers)
-          } yield Redirect(navigator.nextPage(DateTrustStartedPage, mode, updatedAnswers))
+          } yield Redirect(navigator.nextPage(TrusteesBasedInUKPage, mode, updatedAnswers))
       )
   }
 }

@@ -27,13 +27,13 @@ import models._
 class Navigator @Inject()() {
 
   private val normalRoutes: Page => UserAnswers => Call = {
-    case TrustsNamePage => _ => routes.DateTrustStartedController.onPageLoad(NormalMode)
-    case DateTrustStartedPage => _ => routes.TrusteesBasedInUKController.onPageLoad(NormalMode)
+    case TrustsNamePage        => _ => routes.DateTrustStartedController.onPageLoad(NormalMode)
+    case DateTrustStartedPage  => _ => routes.TrusteesBasedInUKController.onPageLoad(NormalMode)
     case TrusteesBasedInUKPage => _ => routes.SettlorsInUKController.onPageLoad(NormalMode)
-    case SettlorsInUKPage => _ => routes.OffshoreTrustController.onPageLoad(NormalMode)
-    case OffshoreTrustPage => _ => routes.PreviouslyBasedController.onPageLoad(NormalMode)
-    case PreviouslyBasedPage => _ => routes.ExpressTrustController.onPageLoad(NormalMode)
-    case ExpressTrustPage => _ => routes.CheckYourAnswersController.onPageLoad()
+    case SettlorsInUKPage      => _ => routes.OffshoreTrustController.onPageLoad(NormalMode)
+    case OffshoreTrustPage     => _ => routes.PreviouslyBasedController.onPageLoad(NormalMode)
+    case PreviouslyBasedPage   => _ => routes.ExpressTrustController.onPageLoad(NormalMode)
+    case ExpressTrustPage      => _ => routes.CheckYourAnswersController.onPageLoad()
   }
 
   private val checkRouteMap: Page => UserAnswers => Call = {
