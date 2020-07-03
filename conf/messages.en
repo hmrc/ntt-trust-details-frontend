@@ -25,7 +25,7 @@ footer.links.privacy = Privacy policy
 footer.links.terms = Terms and conditions
 
 language.cymraeg = Cymraeg
-language.change.cymraeg = Newid yr iaith i'r Gymraeg
+language.change.cymraeg = Newid yr iaith i’r Gymraeg
 language.english = English
 language.change.english = Change the language to English
 language.switcher = Language switcher
@@ -36,10 +36,6 @@ phaseBanner.3 = will help us to improve it.
 
 checkYourAnswers.title = Check your answers
 checkYourAnswers.heading = Check your answers
-
-index.title = ntt-trust-details-frontend
-index.heading = ntt-trust-details-frontend
-index.guidance = Welcome to your new frontend. Please see the README file for a guide to getting started.
 
 session_expired.title = For your security, this service has been reset
 session_expired.heading = For your security, this service has been reset
@@ -144,11 +140,11 @@ dateTrustStarted.error.required.two = The date the trust started must include {0
 dateTrustStarted.error.required = The date the trust started must include {0}
 dateTrustStarted.error.invalid = Enter a real date
 
-trustsName.title = What is the trust's name?
-trustsName.heading = What is the trust's name?
-trustsName.checkYourAnswersLabel = What is the trust's name?
-trustsName.error.required = Enter the trust's name
-trustsName.error.length = The trust's name must be 100 characters or less
+trustsName.title = What is the trust’s name?
+trustsName.heading = What is the trust’s name?
+trustsName.checkYourAnswersLabel = What is the trust’s name?
+trustsName.error.required = Enter the trust’s name
+trustsName.error.length = The trust’s name must be 100 characters or less
 
 trusteesBasedInUK.title = Are the trustees based in the UK
 trusteesBasedInUK.heading = Are the trustees based in the UK

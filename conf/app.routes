@@ -4,9 +4,9 @@ GET        /assets/*file                                controllers.Assets.versi
 
 GET        /language/:lang                              controllers.LanguageSwitchController.switchToLanguage(lang: String)
 
-GET        /this-service-has-been-reset                 controllers.SessionExpiredController.onPageLoad
-
 GET        /check-your-answers                          controllers.CheckYourAnswersController.onPageLoad
+
+GET        /this-service-has-been-reset                 controllers.SessionExpiredController.onPageLoad
 
 GET        /unauthorised                                controllers.UnauthorisedController.onPageLoad
 
@@ -46,3 +46,8 @@ GET        /previouslyBased                        controllers.PreviouslyBasedCo
 POST       /previouslyBased                        controllers.PreviouslyBasedController.onSubmit(mode: Mode = NormalMode)
 GET        /changepreviouslyBased                  controllers.PreviouslyBasedController.onPageLoad(mode: Mode = CheckMode)
 POST       /changepreviouslyBased                  controllers.PreviouslyBasedController.onSubmit(mode: Mode = CheckMode)
+
+GET        /trusteesBasedInUK                        controllers.TrusteesBasedInUKController.onPageLoad(mode: Mode = NormalMode)
+POST       /trusteesBasedInUK                        controllers.TrusteesBasedInUKController.onSubmit(mode: Mode = NormalMode)
+GET        /changetrusteesBasedInUK                  controllers.TrusteesBasedInUKController.onPageLoad(mode: Mode = CheckMode)
+POST       /changetrusteesBasedInUK                  controllers.TrusteesBasedInUKController.onSubmit(mode: Mode = CheckMode)

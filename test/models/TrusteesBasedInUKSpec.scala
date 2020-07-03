@@ -16,20 +16,19 @@
 
 package models
 
-import generators.ModelGenerators
 import org.scalacheck.Arbitrary.arbitrary
 import org.scalacheck.Gen
 import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
 import org.scalatest.{FreeSpec, MustMatchers, OptionValues}
 import play.api.libs.json.{JsError, JsString, Json}
 
-class TrusteesBasedInUKSpec extends FreeSpec with MustMatchers with ScalaCheckPropertyChecks with OptionValues with ModelGenerators {
+class trusteesBasedInUKSpec extends FreeSpec with MustMatchers with ScalaCheckPropertyChecks with OptionValues {
 
-  "TrusteesBasedInUK" - {
+  "trusteesBasedInUK" - {
 
     "must deserialise valid values" in {
 
-      val gen = arbitrary[TrusteesBasedInUK]
+      val gen = Gen.oneOf(TrusteesBasedInUK.values)
 
       forAll(gen) {
         trusteesBasedInUK =>
@@ -51,7 +50,7 @@ class TrusteesBasedInUKSpec extends FreeSpec with MustMatchers with ScalaCheckPr
 
     "must serialise" in {
 
-      val gen = arbitrary[TrusteesBasedInUK]
+      val gen = Gen.oneOf(TrusteesBasedInUK.values)
 
       forAll(gen) {
         trusteesBasedInUK =>

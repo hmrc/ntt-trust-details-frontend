@@ -29,6 +29,21 @@ import uk.gov.hmrc.viewmodels.Text.Literal
 
 class CheckYourAnswersHelper(userAnswers: UserAnswers)(implicit messages: Messages) {
 
+  def trusteesBasedInUK: Option[Row] = userAnswers.get(TrusteesBasedInUKPage) map {
+    answer =>
+      Row(
+        key     = Key(msg"trusteesBasedInUK.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
+        value   = Value(msg"trusteesBasedInUK.$answer"),
+        actions = List(
+          Action(
+            content            = msg"site.edit",
+            href               = routes.TrusteesBasedInUKController.onPageLoad(CheckMode).url,
+            visuallyHiddenText = Some(msg"site.edit.hidden".withArgs(msg"trusteesBasedInUK.checkYourAnswersLabel"))
+          )
+        )
+      )
+  }
+
   def previouslyBased: Option[Row] = userAnswers.get(PreviouslyBasedPage) map {
     answer =>
       Row(
@@ -69,21 +84,6 @@ class CheckYourAnswersHelper(userAnswers: UserAnswers)(implicit messages: Messag
             content            = msg"site.edit",
             href               = routes.ExpressTrustController.onPageLoad(CheckMode).url,
             visuallyHiddenText = Some(msg"site.edit.hidden".withArgs(msg"expressTrust.checkYourAnswersLabel"))
-          )
-        )
-      )
-  }
-
-  def trusteesBasedInUK: Option[Row] = userAnswers.get(TrusteesBasedInUKPage) map {
-    answer =>
-      Row(
-        key     = Key(msg"trusteesBasedInUK.checkYourAnswersLabel", classes = Seq("govuk-!-width-one-half")),
-        value   = Value(Html(answer.map(a => msg"trusteesBasedInUK.$a".resolve).mkString(",<br>"))),
-        actions = List(
-          Action(
-            content            = msg"site.edit",
-            href               = routes.TrusteesBasedInUKController.onPageLoad(CheckMode).url,
-            visuallyHiddenText = Some(msg"site.edit.hidden".withArgs(msg"trusteesBasedInUK.checkYourAnswersLabel"))
           )
         )
       )
