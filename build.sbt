@@ -26,6 +26,7 @@ lazy val root = (project in file("."))
       "models.Mode",
       "controllers.routes._"
     ),
+    //TODO change this port number
     PlayKeys.playDefaultPort := 9000,
     ScoverageKeys.coverageExcludedFiles := "<empty>;Reverse.*;.*handlers.*;.*repositories.*;" +
       ".*BuildInfo.*;.*javascript.*;.*Routes.*;.*GuiceInjector;" +
@@ -43,7 +44,7 @@ lazy val root = (project in file("."))
       Resolver.jcenterRepo
     ),
     Concat.groups := Seq(
-      "javascripts/application.js" -> group(Seq("lib/govuk-frontend/govuk/all.js"))
+      "javascripts/application.js" -> group(Seq("javascripts/back-link.js"))
     ),
     uglifyCompressOptions := Seq("unused=false", "dead_code=false"),
     pipelineStages in Assets := Seq(concat,uglify)
